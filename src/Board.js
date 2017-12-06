@@ -62,7 +62,7 @@
     },
 
 
-/*
+    /*
          _             _     _
      ___| |_ __ _ _ __| |_  | |__   ___ _ __ ___ _
     / __| __/ _` | '__| __| | '_ \ / _ \ '__/ _ (_)
@@ -87,6 +87,7 @@
     hasAnyRowConflicts: function() {
       let len = Object.keys(this.attributes).slice(0, -1);
       return len.reduce((a, v, i) => {
+        console.log(a, v, i);
         return a ? a : this.hasRowConflictAt.call(this, i);
       }, false);
     },
@@ -108,7 +109,7 @@
       let len = Object.keys(this.attributes).slice(0, -1);
       return len.reduce((a, v, i) => {
         return a ? a : this.hasColConflictAt.call(this, i);
-      }, false)
+      }, false);
     },
 
 
@@ -119,7 +120,7 @@
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       let len = Object.keys(this.attributes).slice(0, -1);
-      let sum = len.reduce((a, v, i) => a + this.get)
+      let sum = len.reduce((a, v, i) => a + this.get);
       return false; // fixme
     },
 
