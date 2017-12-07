@@ -16,9 +16,37 @@
 
 
 window.findNRooksSolution = function(n) {
-  var solution = undefined; //fixme
-
-  console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
+  var solution = [];
+  var passed = [];
+  var failed = [];
+  
+  // create an empty n board
+  var board = new Board({'n': 3});
+  var row = board.get(0);
+  var x, y;
+  // place a rook at the top left box
+  row[0] = 1;
+  board.set(0, row);
+  // cancel the x & y coordinates of rook #1
+  x = 0, y = 0;
+    // loop through all the remaining boxes by placing rook #2
+  for (var i = 0; i < n; i++) {
+    if (i !== x) {
+      row = board.get(i);
+      for (var j = 0; j < n; j++) {
+        if (j !== y) {
+          row[j] = 1;
+        }
+      }
+    }
+  }
+    // for each iteration test against conflict function
+    // add passing boards to a Pass container
+    // add failing boards to Fail container
+    // cancel the x & y coordinates of rook #2
+  // for all passing boards place rook #3 in all available space using the Fail container for optimization
+  // repeat until n rooks are placed
+  // push passing boards to the solution
   return solution;
 };
 
