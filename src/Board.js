@@ -119,7 +119,9 @@
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(row, column) {
       let sum = 0;
-      let len = this.get(0).length;
+      
+      let len = this.get('n');
+      
       
       for (row; column < len && row < len; row++) {
         if (this.get(row)[column]) {
@@ -127,14 +129,16 @@
         }
         column++;
       }
-      return sum > 1 ? true : false;
+      return sum > 1 ? true : false; 
+      
+      
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       let result = false;
-      let loop = 1;
-      let len = this.get(0).length;
+      //let loop = 1;
+      let len = this.get('n');
 
       // search for diagonals conflicts starting at colI 0 of row 0
       for (var i = 0; i < len && !result; i++) {
@@ -161,7 +165,7 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(row, column) {
-      let len = this.get(0).length;
+      let len = this.get('n');
       let sum = 0;
 
       for (row; row < len && column >= 0; row++) {
@@ -175,7 +179,7 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      let len = this.get(0).length;
+      let len = this.get('n');
       let result = false;
 
       for (var i = len - 1; i >= 0 && !result; i--) {
